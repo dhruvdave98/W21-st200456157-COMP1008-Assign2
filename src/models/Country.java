@@ -8,6 +8,7 @@ public class Country {
     private String currentGdp;
     private Image countryFlag;
 
+
     public Country(String countryName, String continent, String currentGdp, Image countryFlag) {
         setCountryName(countryName);
         setContinent(continent);
