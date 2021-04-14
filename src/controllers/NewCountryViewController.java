@@ -2,7 +2,10 @@ package controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -14,6 +17,7 @@ import javafx.stage.Stage;
 import models.CountryHistory;
 
 import java.io.File;
+import java.io.IOException;
 
 public class NewCountryViewController {
 
@@ -26,6 +30,7 @@ public class NewCountryViewController {
     @FXML private Label currencyLabel;
     @FXML private Label historyLabel;
     @FXML private Label imageLabel;
+    @FXML private Label errLabel;
 
     @FXML private TextField countryNameTextField;
     @FXML private TextField continentTextField;
@@ -47,22 +52,50 @@ public class NewCountryViewController {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Choose image");
+
+        //filter image to jpg and png only
+        FileChooser.ExtensionFilter imageFilter =
+                                    new FileChooser.ExtensionFilter("Image files","*.jpg","*.png");
+        fileChooser.getExtensionFilters().add(imageFilter);
+
+        //loading image to ImageView
         File imageFile = fileChooser.showOpenDialog(stage);
 
-        if(imageFile.isFile())
+        if(imageFile != null && imageFile.isFile())
         {
             flagImageView.setImage(new Image(imageFile.toURI().toString()));
         }
     }
-    public void submitButtonPressed(ActionEvent event)
-    {
-        newCountry = new CountryHistory(countryNameTextField.getText(),
-                                  continentTextField.getText(),
-                                  gdpTextField.getText(),
-                                    flagImageView.getImage(),
-                                    Double.parseDouble(populationTextField.getText()),
-                                    currencyTextField.getText(),
-                                    historyTextArea.getText());
+    public void submitButtonPressed(ActionEvent event) throws IOException {
+
+        try {
+            newCountry = new CountryHistory(countryNameTextField.getText(),
+                    continentTextField.getText(),
+                    gdpTextField.getText(),
+                    flagImageView.getImage(),
+                    populationTextField.getText(),
+                    currencyTextField.getText(),
+                    historyTextArea.getText());
+            changeScenes(event, newCountry);
+        }catch(IllegalArgumentException e)
+        {
+            errLabel.setText(e.getMessage());
+        }
     }
 
+    public void changeScenes(ActionEvent event,CountryHistory newCountry) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../views/countryDetailsView.fxml"));
+        Parent parent = loader.load();
+
+        Scene scene = new Scene(parent);
+
+        CountryDetailsViewController controller = loader.getController();
+        controller.selectedCountry(newCountry);
+
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setTitle("Explore country");
+        stage.setScene(scene);
+        stage.show();
+    }
 }

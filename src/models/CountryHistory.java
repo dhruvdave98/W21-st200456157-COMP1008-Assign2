@@ -5,12 +5,12 @@ import javafx.scene.image.Image;
 public class CountryHistory extends Country{
 
 
-    private double countryPopulation;
+    private String countryPopulation;
     private String countryCurrency;
     private String countryHistory;
 
     public CountryHistory(String countryName, String continent, String currentGdp, Image countryFlag,
-            double countryPopulation, String countryCurrency, String countryHistory) {
+            String countryPopulation, String countryCurrency, String countryHistory) {
         super(countryName, continent, currentGdp, countryFlag);
         setCountryPopulation(countryPopulation);
         setCountryCurrency(countryCurrency);
@@ -18,8 +18,8 @@ public class CountryHistory extends Country{
     }
 
 
-    public void setCountryPopulation(double countryPopulation) {
-        if(countryPopulation > 0)
+    public void setCountryPopulation(String countryPopulation) {
+        if(countryPopulation.length()>0)
             this.countryPopulation = countryPopulation;
         else
             throw new IllegalArgumentException("Country's population cannot be negative value and should be in numbers only");
@@ -36,7 +36,7 @@ public class CountryHistory extends Country{
             throw new IllegalArgumentException("Country's history should be less than 500 characters long");
     }
 
-    public double getCountryPopulation() {
+    public String getCountryPopulation() {
         return countryPopulation;
     }
 

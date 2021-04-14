@@ -3,10 +3,19 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import models.Country;
+
+import java.util.ArrayList;
 
 public class Main extends Application {
+    private static ArrayList<Country> countries;
+
     public static void main(String[] args) {
         launch(args);
+    }
+    public static ArrayList<Country> getCountries()
+    {
+        return countries;
     }
 
     @Override

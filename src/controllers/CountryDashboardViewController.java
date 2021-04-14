@@ -20,6 +20,8 @@ import java.util.ResourceBundle;
 
 public class CountryDashboardViewController implements Initializable {
 
+    private Country selectedCountry;
+
     @FXML
     private Label countryListLabel;
 
@@ -41,5 +43,10 @@ public class CountryDashboardViewController implements Initializable {
         stage.setTitle("Create new Country");
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void selectedCountry(Country country)
+    {
+        selectedCountry = country;
     }
 }

@@ -39,6 +39,7 @@
             <Button fx:id="imageButton" mnemonicParsing="false" onAction="#selectImageButtonPressed" prefHeight="25.0" prefWidth="174.0" text="Choose" GridPane.columnIndex="1" GridPane.rowIndex="6" />
             <Button fx:id="submitButton" mnemonicParsing="false" onAction="#submitButtonPressed" prefHeight="25.0" prefWidth="174.0" text="Submit" GridPane.columnIndex="1" GridPane.rowIndex="8" />
             <ImageView fx:id="flagImageView" fitHeight="67.0" fitWidth="166.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <Label fx:id="errLabel" prefHeight="15.0" prefWidth="63.0" text="Label" GridPane.rowIndex="7" />
          </children>
       </GridPane>
    </children>
