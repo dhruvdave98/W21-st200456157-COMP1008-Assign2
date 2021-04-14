@@ -22,7 +22,7 @@ public class CountryHistory extends Country{
         if(countryPopulation > 0)
             this.countryPopulation = countryPopulation;
         else
-            throw new IllegalArgumentException("Country's population cannot be negative value");
+            throw new IllegalArgumentException("Country's population cannot be negative value and should be in numbers only");
     }
 
     public void setCountryCurrency(String countryCurrency) {

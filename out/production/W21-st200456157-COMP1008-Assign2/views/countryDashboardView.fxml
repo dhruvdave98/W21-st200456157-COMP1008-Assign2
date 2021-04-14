@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="700.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CountryDashboardViewController">
+   <children>
+      <VBox layoutX="28.0" layoutY="14.0" spacing="10.0">
+         <children>
+            <Label fx:id="countryListLabel" prefHeight="41.0" prefWidth="648.0" text="List of Coutries">
+               <padding>
+                  <Insets left="242.0" />
+               </padding>
+            </Label>
+            <ListView fx:id="countryListView" prefHeight="483.0" prefWidth="653.0" />
+            <Button fx:id="createCountryButton" mnemonicParsing="false" onAction="#newCountryButtonPressed" prefHeight="33.0" prefWidth="189.0" text="Create new Country" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

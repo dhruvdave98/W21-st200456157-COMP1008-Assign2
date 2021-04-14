@@ -56,4 +56,9 @@ public class Country {
     public Image getCountryFlag() {
         return countryFlag;
     }
+
+    public String toString()
+    {
+        return String.format("%s",countryName);
+    }
 }
