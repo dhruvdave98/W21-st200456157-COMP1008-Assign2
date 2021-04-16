@@ -30,10 +30,10 @@ public class CountryHistory extends Country{
     }
 
     public void setCountryHistory(String countryHistory) {
-        if(countryHistory.length() < 500)
+        if(countryHistory.length() < 600)
             this.countryHistory = countryHistory;
         else
-            throw new IllegalArgumentException("Country's history should be less than 500 characters long");
+            throw new IllegalArgumentException("Country's history should be less than 600 characters long");
     }
 
     public String getCountryPopulation() {
