@@ -28,26 +28,33 @@ public class CountryDetailsViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-//        countryListView.getItems().addAll(controllers.Main.getCountries());
-//        flagImage.setImage(flagImage.getImage());
-//        populationLabel.getText();
-//        currencyLabel.getText();
-//        countryGdpLabel.getText();
-//        continentLabel.getText();
-//        historyTextArea.getText();
+        countryListView.getItems().addAll(Main.getCountries());
+        flagImage.setImage(flagImage.getImage());
+        populationLabel.getText();
+        currencyLabel.getText();
+        countryGdpLabel.getText();
+        continentLabel.getText();
+        historyTextArea.getText();
     }
 
+    /**
+     * Method to check which country is selected in in listView
+     */
     public void listViewSelectCountry()
     {
         chooseCountry = countryListView.getSelectionModel().getSelectedItem();
         updateGUI();
     }
+
     public void chooseCountry(CountryHistory newCountry)
     {
         chooseCountry = newCountry;
-        countryListView.getItems().addAll(Main.getCountries());
         updateGUI();
     }
+
+    /**
+     * Method to update GUI and other fields
+     */
     private void updateGUI()
     {
         flagImage.setImage(chooseCountry.getCountryFlag());
@@ -58,6 +65,11 @@ public class CountryDetailsViewController implements Initializable {
         historyTextArea.setText(chooseCountry.getCountryHistory());
     }
 
+    /**
+     * Method to change scene after create country button pressed
+     * @param event
+     * @throws IOException
+     */
     public void createCountryButton(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("../views/newCountryView.fxml"));
         Scene scene = new Scene(root);

@@ -22,13 +22,6 @@ public class NewCountryViewController {
 
     private CountryHistory newCountry;
 
-    @FXML private Label countryNameLabel;
-    @FXML private Label continentLabel;
-    @FXML private Label gdpLabel;
-    @FXML private Label populationLabel;
-    @FXML private Label currencyLabel;
-    @FXML private Label historyLabel;
-    @FXML private Label imageLabel;
     @FXML private Label errLabel;
 
     @FXML private TextField countryNameTextField;
@@ -41,6 +34,12 @@ public class NewCountryViewController {
     @FXML private ImageView flagImageView;
 
 
+    /**
+     * Method to execute after select image button is pressed and
+     * have some validations in it
+     * @param event
+     * @throws IOException
+     */
     public void selectImageButtonPressed(ActionEvent event) throws IOException {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         FileChooser fileChooser = new FileChooser();
@@ -60,6 +59,11 @@ public class NewCountryViewController {
         }
     }
 
+    /**
+     * Method to execute after submit button is pressed
+     * @param event
+     * @throws IOException
+     */
     public void submitButtonPressed(ActionEvent event) throws IOException {
 
         try {
@@ -78,6 +82,12 @@ public class NewCountryViewController {
         }
     }
 
+    /**
+     * method to change scene after submit button is pressed
+     * @param event
+     * @param newCountry
+     * @throws IOException
+     */
     public void changeScenes(ActionEvent event,CountryHistory newCountry) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../views/countryDetailsView.fxml"));
