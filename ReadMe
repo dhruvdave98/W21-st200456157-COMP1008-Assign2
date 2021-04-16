@@ -1,0 +1,3 @@
+My Main class is in controller package.
+Because my controllers were not working fine without it and 
+I am not able to import Main class' methods 
