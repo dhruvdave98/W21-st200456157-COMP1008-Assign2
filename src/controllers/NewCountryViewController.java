@@ -6,7 +6,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -39,16 +38,10 @@ public class NewCountryViewController {
     @FXML private TextField currencyTextField;
     @FXML private TextArea historyTextArea;
 
-    @FXML private Button imageButton;
-    @FXML private Button submitButton;
-
     @FXML private ImageView flagImageView;
 
-    public NewCountryViewController() {
-    }
 
-    public void selectImageButtonPressed(ActionEvent event)
-    {
+    public void selectImageButtonPressed(ActionEvent event) throws IOException {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Choose image");
@@ -66,6 +59,7 @@ public class NewCountryViewController {
             flagImageView.setImage(new Image(imageFile.toURI().toString()));
         }
     }
+
     public void submitButtonPressed(ActionEvent event) throws IOException {
 
         try {
@@ -76,6 +70,7 @@ public class NewCountryViewController {
                     populationTextField.getText(),
                     currencyTextField.getText(),
                     historyTextArea.getText());
+            Main.getCountries().add(newCountry);
             changeScenes(event, newCountry);
         }catch(IllegalArgumentException e)
         {
@@ -91,7 +86,7 @@ public class NewCountryViewController {
         Scene scene = new Scene(parent);
 
         CountryDetailsViewController controller = loader.getController();
-        controller.selectedCountry(newCountry);
+        controller.chooseCountry(newCountry);
 
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setTitle("Explore country");

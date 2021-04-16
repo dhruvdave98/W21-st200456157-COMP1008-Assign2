@@ -12,7 +12,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import models.Country;
-import utilities.Utility;
 
 import java.io.IOException;
 import java.net.URL;
@@ -33,8 +32,18 @@ public class CountryDashboardViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        countryListView.getItems().addAll(Utility.getCountries());
+        //countryListView.getItems().addAll(Utility.getCountries());
     }
+
+//    public void listViewSelectCountry(ActionEvent event) throws IOException {
+//        selectedCountry = countryListView.getSelectionModel().getSelectedItem();
+//        Parent root = FXMLLoader.load(getClass().getResource("../views/countryDetailsView.fxml"));
+//        Scene scene = new Scene(root);
+//        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+//        stage.setTitle("Create new Country");
+//        stage.setScene(scene);
+//        stage.show();
+//    }
 
     public void newCountryButtonPressed(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("../views/newCountryView.fxml"));
@@ -48,5 +57,6 @@ public class CountryDashboardViewController implements Initializable {
     public void selectedCountry(Country country)
     {
         selectedCountry = country;
+        countryListView.getItems().addAll(Main.getCountries());
     }
 }
